@@ -1,0 +1,27 @@
+# 请将 start_url 改为待测系统的测试环境地址。
+start_url: "https://example.com"
+headless: true
+timeout_ms: 10000
+max_pages: 10
+max_actions_per_page: 12
+
+# 仅扫描这些主机，避免爬取跳转到的第三方页面。
+allowed_hosts:
+  - "example.com"
+
+# 生成填表用例时使用的默认数据。生产账号等敏感信息请使用 CI 密钥注入，勿提交到仓库。
+sample_data:
+  email: "tester@example.com"
+  password: "TestPassword123!"
+  text: "自动化测试"
+
+# AI 用例生成可选配置。调用时仅发送页面标题、控件名称、选择器等结构化元数据，
+# 不会发送页面正文；仍请先确认目标系统允许将这些元数据发送给模型服务。
+ai:
+  provider: "openai_compatible"
+  model: "gpt-5.6-luna"
+  base_url: "https://api.openai.com/v1"
+  api_key_env: "OPENAI_API_KEY"
+  timeout_seconds: 60
+  max_cases: 12
+  allow_submit: false
